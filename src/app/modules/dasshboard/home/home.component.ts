@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DashboardService } from 'src/app/services/dashboard.service';
-import * as CryptoJS from 'crypto-js';
+//import * as CryptoJS from 'crypto-js';
 import { NgxSpinnerService } from 'ngx-spinner'
 
 @Component({
@@ -22,7 +22,9 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     this.spinner.show()
-    const tempData = CryptoJS.AES.decrypt(localStorage.getItem('userData'), 'SSKKiHSHSH').toString(CryptoJS.enc.Utf8);
+    // const tempData = CryptoJS.AES.decrypt(localStorage.getItem('userData'), 'SSKKiHSHSH').toString(CryptoJS.enc.Utf8);
+    // this.userData = JSON.parse(tempData)
+    const tempData = localStorage.getItem('userData').toString()
     this.userData = JSON.parse(tempData)
     console.log(this.userData)
 

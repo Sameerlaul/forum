@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { OnboardingService } from 'src/app/services/onboarding.service';
-import * as CryptoJS from 'crypto-js';
+//ort * as CryptoJS from 'crypto-js';
 import { Router } from '@angular/router';
 import { NgxSpinnerService } from "ngx-spinner"
 
@@ -36,8 +36,13 @@ export class LoginComponent implements OnInit {
       this.spinner.hide()
       if (data.status.code === "00") {
         console.log(data)
-        let datatoStorage = CryptoJS.AES.encrypt(JSON.stringify(data.result), 'SSKKiHSHSH').toString();
-        localStorage.setItem('userData', datatoStorage);
+        // let datatoStorage = CryptoJS.AES.encrypt(JSON.stringify(data.result), 'SSKKiHSHSH').toString();
+        // localStorage.setItem('userData', datatoStorage);
+        let datatoStorage = JSON.stringify(data.result).toString()
+        localStorage.setItem('userData', datatoStorage)
+        const tempData = localStorage.getItem('userData').toString()
+        this.userData= JSON.parse(tempData)
+        console.log(this.userData)
         this.router.navigateByUrl('/')
         // const tempData = CryptoJS.AES.decrypt(localStorage.getItem('userData'), 'SSKKiHSHSH').toString(CryptoJS.enc.Utf8);
         // this.userData = JSON.parse(tempData)
