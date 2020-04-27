@@ -38,7 +38,7 @@ export class LoginComponent implements OnInit {
         console.log(data)
         // let datatoStorage = CryptoJS.AES.encrypt(JSON.stringify(data.result), 'SSKKiHSHSH').toString();
         // localStorage.setItem('userData', datatoStorage);
-        let datatoStorage = JSON.stringify(data.result).toString()
+        let datatoStorage = JSON.stringify(data.result)
         localStorage.setItem('userData', datatoStorage)
         const tempData = localStorage.getItem('userData').toString()
         this.userData= JSON.parse(tempData)
