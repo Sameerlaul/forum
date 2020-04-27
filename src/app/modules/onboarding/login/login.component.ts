@@ -39,8 +39,9 @@ export class LoginComponent implements OnInit {
         // let datatoStorage = CryptoJS.AES.encrypt(JSON.stringify(data.result), 'SSKKiHSHSH').toString();
         // localStorage.setItem('userData', datatoStorage);
         let datatoStorage = JSON.stringify(data.result)
+        console.log(datatoStorage)
         localStorage.setItem('userData', datatoStorage)
-        const tempData = localStorage.getItem('userData').toString()
+        const tempData = localStorage.getItem('userData')
         this.userData= JSON.parse(tempData)
         console.log(this.userData)
         this.router.navigateByUrl('/')

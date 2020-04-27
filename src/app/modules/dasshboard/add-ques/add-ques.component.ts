@@ -21,7 +21,7 @@ export class AddQuesComponent implements OnInit {
   ngOnInit() {
     // const tempData = CryptoJS.AES.decrypt(localStorage.getItem('userData'), 'SSKKiHSHSH').toString(CryptoJS.enc.Utf8);
     // this.userData = JSON.parse(tempData)
-    const tempData = localStorage.getItem('userData').toString()
+    const tempData = localStorage.getItem('userData')
     this.userData = JSON.parse(tempData)
     console.log(this.userData)
   }
