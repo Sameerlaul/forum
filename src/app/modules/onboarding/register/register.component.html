@@ -77,7 +77,6 @@
                     <span class="font_bold">Email Verification</span>
                     <ng-otp-input   (onInputChange)="onOtpChange($event)"  [config]="{length:6, allowNumbersOnly:true}"></ng-otp-input>
                 </div>
-                <p class="alert-message mr-t30">{{errorVerification}}</p>
                 <button type="button" class="btn-primary large-btn mx-auto pointer mr-t60"  [disabled]="otpFlag" (click)="verify()">Verify</button>
             </div>
         </div>
