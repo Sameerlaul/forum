@@ -13,7 +13,10 @@ import { NgxSpinnerService } from "ngx-spinner"
 export class LoginComponent implements OnInit {
 
   loginForm: FormGroup
-  userData: any
+  userData: any = {
+    token: '',
+    id: ''
+  };
   forgot_email: any;
   successMessage: string;
   errorFromServer: any;

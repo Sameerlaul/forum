@@ -9,7 +9,10 @@ import { NgxSpinnerService } from 'ngx-spinner'
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  userData: any;
+  userData: any = {
+    token: '',
+    id: ''
+  };
   temp = {};
   questionList = []
   constructor(private dashboardService: DashboardService, private spinner: NgxSpinnerService) {

@@ -14,7 +14,10 @@ export class AddQuesComponent implements OnInit {
   title;
   body;
   tag
-  userData: any;
+  userData: any = {
+    token: '',
+    id: ''
+  };
   constructor(private dashboardService: DashboardService, private spinner: NgxSpinnerService,
     private router: Router) { }
 
