@@ -1,0 +1,44 @@
+<ngx-spinner></ngx-spinner>
+<div class="container ">
+    <!-- <div class="text-center">
+        <div class="dropdown pt-2">
+            <button class="btn btn-primary">Tags</button>
+            <div class="dropdown-content">
+                <a href="#">Link 1</a>
+                <a href="#">Link 2</a>
+                <a href="#">Link 3</a>
+            </div>
+        </div>
+    </div> -->
+    <table class="p-5 pt-2 table table-striped table-borderedless table-responsive">
+        <thead class="thead-light">
+            <tr>
+                <th scope="col">Question</th>
+                <th scope="col">Tag</th>
+                <th scope="col">Answers</th>
+                <th scope="col">Authers</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let ques of questionList">
+                <td>
+                    <h3 class="h5"><a href="#">{{ques.title}}</a></h3>
+                    <p>{{ques.body}}</p>
+                </td>
+                <td>
+                    <div>
+                        <p>{{ques.tag}}</p>
+                    </div>
+                </td>
+                <td>
+                    <div>{{ques.replies_count}}</div>
+                </td>
+                <td>
+                    <!-- <h4 class="h6"><a href="#">Post name</a></h4> -->
+                    <div>By <a href="#">{{ques.fullname}}</a></div>
+                    <div>{{ques.created_at | date:'medium'}}</div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

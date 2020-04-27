@@ -1,0 +1,85 @@
+<ngx-spinner></ngx-spinner>
+<!-- Sign up form -->
+<section class="signup mt-5">
+    <div class="container">
+        <div class="signup-content">
+            <div class="signup-form">
+                <h2 class="form-title">Sign up</h2>
+                <form class="register-form" id="register-form" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+                    <div class="form-group">
+                        <label for="name"><i class="zmdi zmdi-account material-icons-name"></i></label>
+                        <input required type="text" name="name" id="name" placeholder="Your Name" formControlName="fullname" />
+                    </div>
+                    <div class="form-group">
+                        <label for="email"><i class="zmdi zmdi-email"></i></label>
+                        <input required type="email" name="email" id="email" placeholder="Your Email" formControlName="email" />
+                    </div>
+                    <div class="form-group">
+                        <label for="re-pass"><span class="iconify" data-icon="fa-solid:mobile-alt"
+                                data-inline="false"></span></label>
+                        <input required type="number" name="re_pass" id="re_pass" placeholder="Your Mobile No."
+                            formControlName="mobile_number" />
+                    </div>
+                    <div class="form-group">
+                        <label for="pass"><i class="zmdi zmdi-lock"></i></label>
+                        <input required type="password" name="pass" id="pass" placeholder="Password"
+                            formControlName="password" />
+                    </div>
+                    <p class="alert-message" *ngIf="error"> Please fill all required fields </p>
+                    <!-- <ng-otp-input (onInputChange)="onOtpChange($event)"  [config]="{length:6, allowNumbersOnly:true}"></ng-otp-input> -->
+                    <div class="form-group form-button">
+                        <button type="submit" name="signup" id="signup"
+                            class="form-submit">Register</button>
+                    </div>
+                </form>
+            </div>
+            <div class="signup-image">
+                <figure><img src="../../../../assets/images/signup-image.jpg" alt="sing up image"></figure>
+                <a routerLink="/onboarding" class="signup-image-link">I am already member</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+<button id="signin" style="display: none;" data-target="#exampleModal" data-toggle="modal">
+</button>
+
+<div class="mr-t30 modal fade bd-example-modal-lg" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    data-backdrop="static" data-keyboard="false" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <!-- <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">O</h5>
+                <button type="button" id="verifymodal" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <ng-otp-input (onInputChange)="onOtpChange($event)"  [config]="{length:6, allowNumbersOnly:true}"></ng-otp-input>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" (click)="verify()">Save changes</button>
+            </div>
+        </div> -->
+        <div class="modal-content">
+            <div class="modal-body pd50">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" id="verifymodal">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <div class="mocal-content">
+                    <h4 class="text24 font_bold color-cyprus-black mr-b20 text-center">Thanks for Signing Up!</h4>
+                    <p class="text20 font_regular color-cyprus-black text-center">Verification code has been sent to <br><strong>{{registerForm.get('email').value}}</strong>. Please enter code in following <br>fields.</p>
+                </div>
+                <div class="mail-otp-input text20 font_regular color-cyprus-black text-center">
+                    <span class="font_bold">Email Verification</span>
+                    <ng-otp-input   (onInputChange)="onOtpChange($event)"  [config]="{length:6, allowNumbersOnly:true}"></ng-otp-input>
+                </div>
+                <p class="alert-message mr-t30">{{errorVerification}}</p>
+                <button type="button" class="btn-primary large-btn mx-auto pointer mr-t60"  [disabled]="otpFlag" (click)="verify()">Verify</button>
+            </div>
+        </div>
+    </div>
+</div>
