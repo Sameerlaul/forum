@@ -8,8 +8,8 @@ export class DashboardService {
 
   constructor(private api: ApiRequestService) { }
 
-  questionList(payload, token){
-    return this.api.postwttoken('forum/question-list', payload, token)
+  questionList(payload){
+    return this.api.post('forum/question-list', payload)
   }
 
   submitQuestion(payload, token){

@@ -31,7 +31,7 @@ export class HomeComponent implements OnInit {
     this.userData = JSON.parse(tempData)
     console.log(this.userData)
 
-    this.dashboardService.questionList(this.temp, this.userData.token).subscribe((data: any) => {
+    this.dashboardService.questionList(this.temp).subscribe((data: any) => {
       this.spinner.hide()
       if (data.status.code === "00") {
         this.questionList = data.result.data
