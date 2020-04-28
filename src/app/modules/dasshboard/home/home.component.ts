@@ -27,10 +27,11 @@ export class HomeComponent implements OnInit {
     this.spinner.show()
     // const tempData = CryptoJS.AES.decrypt(localStorage.getItem('userData'), 'SSKKiHSHSH').toString(CryptoJS.enc.Utf8);
     // this.userData = JSON.parse(tempData)
-    const tempData = localStorage.getItem('userData')
-    this.userData = JSON.parse(tempData)
-    console.log(this.userData)
+    // const tempData = localStorage.getItem('userData')
+    // this.userData = JSON.parse(tempData)
+    // console.log(this.userData)
 
+    
     this.dashboardService.questionList(this.temp).subscribe((data: any) => {
       this.spinner.hide()
       if (data.status.code === "00") {
