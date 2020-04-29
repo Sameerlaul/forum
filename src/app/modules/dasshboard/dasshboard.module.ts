@@ -5,16 +5,20 @@ import { DasshboardRoutingModule } from './dasshboard-routing.module';
 import { HomeComponent } from './home/home.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { AddQuesComponent } from './add-ques/add-ques.component';
-import { FormsModule } from '@angular/forms';
-import { NgxSpinnerModule} from 'ngx-spinner'
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NgxSpinnerModule} from 'ngx-spinner';
+import { QuestionComponent } from './question/question.component';
+import { NgxPaginationModule} from 'ngx-pagination'
 
 @NgModule({
-  declarations: [HomeComponent, AddQuesComponent],
+  declarations: [HomeComponent, AddQuesComponent, QuestionComponent],
   imports: [
     CommonModule,
     DasshboardRoutingModule,
     FormsModule,
-    NgxSpinnerModule
+    NgxSpinnerModule,
+    ReactiveFormsModule,
+    NgxPaginationModule
   ]
 })
 export class DasshboardModule { }

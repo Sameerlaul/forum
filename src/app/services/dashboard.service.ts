@@ -15,4 +15,12 @@ export class DashboardService {
   submitQuestion(payload, token){
     return this.api.postwttoken('forum/submit-question', payload, token)
   }
+
+  quesAnswer(payload){
+    return this.api.post('forum/question-answers', payload)
+  }
+
+  submitAnswer(payload, token){
+    return this.api.postwttoken('forum/submit-answer', payload, token)
+  }
 }

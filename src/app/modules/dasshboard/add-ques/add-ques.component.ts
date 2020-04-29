@@ -25,30 +25,41 @@ export class AddQuesComponent implements OnInit {
     // const tempData = CryptoJS.AES.decrypt(localStorage.getItem('userData'), 'SSKKiHSHSH').toString(CryptoJS.enc.Utf8);
     // this.userData = JSON.parse(tempData)
     const tempData = localStorage.getItem('userData')
-    this.userData = JSON.parse(tempData)
-    console.log(this.userData)
+    // this.userData = JSON.parse(tempData)
+    // console.log(this.userData)
   }
 
   onSubmit() {
     this.spinner.show()
-    let tempObj = {
-      que_id: null,
-      title: this.title,
-      body: this.body,
-      user_id: this.userData.id,
-      tag_id: +this.tag
+    const tempData = localStorage.getItem('userData')
+   
+    if(tempData){
+      this.userData = JSON.parse(tempData)
+      console.log(this.userData)
+      let tempObj = {
+        que_id: null,
+        title: this.title,
+        body: this.body,
+        user_id: this.userData.id,
+        tag_id: +this.tag
+      }
+      this.dashboardService.submitQuestion(tempObj, this.userData.token).subscribe((data: any) => {
+        if (data.status.code == "00") {
+          this.spinner.hide()
+          this.router.navigateByUrl('/')
+        }
+        else {
+          this.spinner.hide()
+          alert('Something went wrong')
+        }
+      })
     }
-    console.log(tempObj)
-    this.dashboardService.submitQuestion(tempObj, this.userData.token).subscribe((data: any) => {
-      if (data.status.code == "00") {
-        this.spinner.hide()
-        this.router.navigateByUrl('/')
-      }
-      else {
-        this.spinner.hide()
-        alert('Something went wrong')
-      }
-    })
+    else{
+      this.spinner.hide()
+      alert("You need ti login first.")
+      this.router.navigateByUrl('/onboarding')
+    }
+    
   }
 
 }

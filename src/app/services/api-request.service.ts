@@ -9,6 +9,7 @@ export class ApiRequestService {
   readonly ROOT_URL;
   constructor( private http: HttpClient) {
     this.ROOT_URL = 'http://52.172.133.91:5545/api/v1.0'
+    // this.ROOT_URL = 'http://76bd84cb.ngrok.io/api/v1.0'
   }
 
   get(uri: string){
