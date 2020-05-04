@@ -8,10 +8,11 @@ import { AddQuesComponent } from './add-ques/add-ques.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgxSpinnerModule} from 'ngx-spinner';
 import { QuestionComponent } from './question/question.component';
-import { NgxPaginationModule} from 'ngx-pagination'
+import { NgxPaginationModule} from 'ngx-pagination';
+import { MyQuestionComponent } from './my-question/my-question.component'
 
 @NgModule({
-  declarations: [HomeComponent, AddQuesComponent, QuestionComponent],
+  declarations: [HomeComponent, AddQuesComponent, QuestionComponent, MyQuestionComponent],
   imports: [
     CommonModule,
     DasshboardRoutingModule,

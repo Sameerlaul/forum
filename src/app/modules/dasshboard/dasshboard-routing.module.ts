@@ -3,6 +3,8 @@ import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { AddQuesComponent } from './add-ques/add-ques.component';
 import { QuestionComponent } from './question/question.component';
+import { AuthGaurd } from 'src/app/auth-gaurd';
+import { MyQuestionComponent } from './my-question/my-question.component';
 
 
 const routes: Routes = [
@@ -12,11 +14,17 @@ const routes: Routes = [
   },
   {
     path: 'add-ques',
-    component: AddQuesComponent
+    component: AddQuesComponent,
+    canActivate : [AuthGaurd]
   },
   {
-    path: 'ques/:id',
+    path: 'ques/:id/:status',
     component: QuestionComponent
+  },
+  {
+    path: 'my-question',
+    component: MyQuestionComponent,
+    canActivate : [AuthGaurd]
   }
 ];
 

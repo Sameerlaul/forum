@@ -42,10 +42,14 @@
                         <td class="author-col">
                             <div><span class="font-weight-bold">Answered by: </span><br>{{answer.user_name}}</div>
                             <div><span class="font-weight-bold">Date: </span>{{answer.created_at | date}}</div>
+                            <div *ngIf="answer.is_right == 1"><span class="iconify" data-icon="zmdi:check" data-inline="false" style="color: green;" data-width="50" data-height="40"></span></div>
                         </td>
                         <td>
-                            <p>{{answer.answer}}</p>
-
+                            <p>{{answer.answer}}</p><br>
+                            <div class="row" *ngIf="status == 1">
+                                <div class="col-md-10"></div>
+                                <div class="col-md-2"><button class="btn btn-success" (click)="onApprove(answer.id)">Approve</button></div>
+                            </div>
                         </td>
                     </tr>
                 </tbody>
@@ -55,7 +59,7 @@
     <div class="container text-center" *ngIf="!answerList.length">
         <p>No answer yet.</p>
     </div>
-    <form class="mb-3" [formGroup]="ansForm" (ngSubmit)="onSubmit()">
+    <form  *ngIf="status !== 1" class="mb-3" [formGroup]="ansForm" (ngSubmit)="onSubmit()">
         <div class="form-group">
             <label for="answer">Reply to this question:</label>
             <textarea name="" class="form-control" id="answer" formControlName="answer" cols="30" rows="5"

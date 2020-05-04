@@ -17,6 +17,7 @@ export class QuestionComponent implements OnInit {
   answerList = []
   ansForm: FormGroup;
   quesData;
+  status
   constructor(private route: ActivatedRoute, private dashboardService: DashboardService,
     private spinner: NgxSpinnerService, private router: Router) { }
 
@@ -30,6 +31,7 @@ export class QuestionComponent implements OnInit {
     this.route.paramMap.subscribe(params => {
       this.param = params;
       this.quesId = +this.param.params.id;
+      this.status = +this.param.params.status
     });
     this.spinner.show()
     this.dashboardService.quesAnswer({ que_id: this.quesId }).subscribe((data: any) => {
@@ -72,6 +74,21 @@ export class QuestionComponent implements OnInit {
       this.spinner.hide()
       this.router.navigateByUrl('/onboarding')
     }
+  }
+
+  onApprove(ans_id){
+    const tempData = localStorage.getItem('userData')
+    this.userData = JSON.parse(tempData)
+    console.log(this.userData)
+    let temp = {
+      ans_id: ans_id,
+      user_id: this.userData.id
+    }
+    this.dashboardService.updateAnswersStatus(temp, this.userData.token).subscribe((data: any) => {
+      if(data.status.code == "00"){
+        this.ngOnInit()
+      }
+    })
   }
 
 }

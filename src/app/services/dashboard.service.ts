@@ -23,4 +23,8 @@ export class DashboardService {
   submitAnswer(payload, token){
     return this.api.postwttoken('forum/submit-answer', payload, token)
   }
+
+  updateAnswersStatus(payload, token){
+    return this.api.postwttoken('forum/update-answers-status', payload, token)
+  }
 }
