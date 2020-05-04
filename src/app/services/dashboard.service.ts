@@ -1,12 +1,16 @@
 import { Injectable } from '@angular/core';
 import { ApiRequestService } from './api-request.service';
+import { Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DashboardService {
 
+  // private user = new Subject<any>()
   constructor(private api: ApiRequestService) { }
+
+  
 
   questionList(payload){
     return this.api.post('forum/question-list', payload)

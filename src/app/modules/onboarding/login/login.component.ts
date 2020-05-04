@@ -47,6 +47,7 @@ export class LoginComponent implements OnInit {
         const tempData = localStorage.getItem('userData')
         this.userData= JSON.parse(tempData)
         console.log(this.userData)
+        this.onboardingService.updateNav(true)
         this.router.navigateByUrl('/')
         // const tempData = CryptoJS.AES.decrypt(localStorage.getItem('userData'), 'SSKKiHSHSH').toString(CryptoJS.enc.Utf8);
         // this.userData = JSON.parse(tempData)

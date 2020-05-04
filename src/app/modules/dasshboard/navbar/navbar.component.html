@@ -16,13 +16,16 @@
         </ul>        
         <ul class="navbar-nav">
             <li class="nav-item">
-                <a class="nav-link" routerLink="/my-question" routerLinkActive>My Questions <span class="sr-only">(current)</span></a>
+                <a class="nav-link" *ngIf="user" routerLink="/my-question" routerLinkActive>My Questions <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" routerLink="/onboarding" routerLinkActive>Login <span class="sr-only">(current)</span></a>
+                <a class="nav-link" *ngIf="user" (click)="logout()" >Logout <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" routerLink="/onboarding/register" routerLinkActive>Register <span class="sr-only">(current)</span></a>
+                <a class="nav-link" *ngIf="!user" routerLink="/onboarding" routerLinkActive>Login <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" *ngIf="!user" routerLink="/onboarding/register" routerLinkActive>Register <span class="sr-only">(current)</span></a>
             </li>
         </ul>
     </div>
